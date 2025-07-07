@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="card">
+      <img src="{{ tour.image.url }}" class="card-img-top">
+      <div class="card-body">
+        <h3>{{ tour.name }}</h3>
+        <p><strong>Location:</strong> {{ tour.city }}, {{ tour.country }}</p>
+        <p><strong>Description:</strong><br>{{ tour.description }}</p>
+        <p><strong>Duration:</strong> {{ tour.duration_days }} days</p>
+        <p><strong>Food Type:</strong> {{ tour.food_type }}</p>
+        <p><strong>Tour Type:</strong> {{ tour.tour_type }}</p>
+        <p><strong>Price:</strong> ₹{{ tour.price }}</p>
+        <p><strong>Available From:</strong> {{ tour.availability_date }}</p>
+        <p><strong>Rating:</strong> {{ tour.rating }}</p>
+        <a href="/tour/{{ tour.id }}/pdf/" class="btn btn-success">📄 Download PDF</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

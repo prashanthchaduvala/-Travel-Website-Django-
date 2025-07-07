@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-5">
+  <div class="bg-white shadow rounded p-4 border border-light">
+    <h3 class="mb-4 text-center text-primary">✏️ Update Tour Details</h3>
+    
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      
+      <div class="mb-3">
+        <label for="id_name" class="form-label">Tour Name</label>
+        {{ form.name }}
+        {% for error in form.name.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+      
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="id_country" class="form-label">Country</label>
+          {{ form.country }}
+          {% for error in form.country.errors %}
+            <div class="text-danger small">{{ error }}</div>
+          {% endfor %}
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="id_city" class="form-label">City</label>
+          {{ form.city }}
+          {% for error in form.city.errors %}
+            <div class="text-danger small">{{ error }}</div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="id_duration_days" class="form-label">Duration (in days)</label>
+          {{ form.duration_days }}
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="id_price" class="form-label">Price (₹)</label>
+          {{ form.price }}
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="id_availability_date" class="form-label">Availability Date</label>
+        {{ form.availability_date }}
+      </div>
+
+      <div class="mb-3">
+        <label for="id_food_type" class="form-label">Food Preference</label>
+        {{ form.food_type }}
+      </div>
+
+      <div class="mb-3">
+        <label for="id_tour_type" class="form-label">Tour Type</label>
+        {{ form.tour_type }}
+      </div>
+
+      <div class="mb-3">
+        <label for="id_description" class="form-label">Tour Description</label>
+        {{ form.description }}
+      </div>
+
+      <div class="mb-3">
+        <label for="id_image" class="form-label">Tour Image</label><br>
+        {% if tour.image %}
+          <img src="{{ tour.image.url }}" alt="Current Image" class="img-thumbnail mb-2" width="200"><br>
+        {% endif %}
+        {{ form.image }}
+      </div>
+
+      <div class="form-check form-switch mb-4">
+        <input class="form-check-input" type="checkbox" role="switch" id="id_is_active"
+               name="is_active" {% if tour.is_active %}checked{% endif %}>
+        <label class="form-check-label" for="id_is_active">
+          Publish Tour
+          {% if tour.is_active %}
+            <span class="text-success"> (Currently Published)</span>
+          {% else %}
+            <span class="text-danger"> (Currently Unpublished)</span>
+          {% endif %}
+        </label>
+      </div>
+      
+      
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary">⬅ Back</a>
+        <button type="submit" class="btn btn-primary">💾 Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

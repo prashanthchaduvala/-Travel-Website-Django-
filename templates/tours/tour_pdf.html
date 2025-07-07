@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>{{ tour.title }} - Itinerary</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        h1 { color: #2e6c80; }
+        .section { margin-bottom: 20px; }
+        .label { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>{{ tour.title }}</h1>
+    <div class="section"><span class="label">Country:</span> {{ tour.country }}</div>
+    <div class="section"><span class="label">Days:</span> {{ tour.days }}</div>
+    <div class="section"><span class="label">Locations:</span> {{ tour.locations }}</div>
+    <div class="section"><span class="label">Places to Visit:</span> {{ tour.places_to_visit }}</div>
+    <div class="section"><span class="label">Hours Spent:</span> {{ tour.hours_spent }}</div>
+    <div class="section"><span class="label">Carry Items:</span> {{ tour.carry_items }}</div>
+    <div class="section"><span class="label">Food Types:</span> {{ tour.food_types }}</div>
+    <div class="section"><span class="label">Price:</span> ${{ tour.price }}</div>
+    <div class="section"><span class="label">Contact Email:</span> {{ tour.contact_email }}</div>
+    <div class="section"><span class="label">Contact Phone:</span> {{ tour.contact_phone }}</div>
+</body>
+</html>

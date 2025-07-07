@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>✈️ Verify Reset OTP</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .otp-box {
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+
+    .otp-box h2 {
+      color: #d35400;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .otp-box input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .otp-box button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #e67e22;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .otp-box button:hover {
+      background-color: #ca6f1e;
+    }
+
+    .otp-icon {
+      font-size: 40px;
+      color: #e67e22;
+      margin-bottom: 10px;
+    }
+
+    .error-message {
+      color: red;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="otp-box">
+    <div class="otp-icon">📮</div>
+    <h2>Verify Your OTP to Reset Password</h2>
+    <form method="post">
+      {% csrf_token %}
+      <input type="text" name="otp" placeholder="Enter the OTP you received" required>
+      <button type="submit">🔐 Verify & Continue</button>
+    </form>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="error-message">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</body>
+</html>

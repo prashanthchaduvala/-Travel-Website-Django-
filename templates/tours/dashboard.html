@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h3>👤 My Tours Dashboard</h3>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <form class="d-flex" method="get">
+      <input type="text" name="q" class="form-control me-2" placeholder="Search tour name..." value="{{ query }}">
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </form>
+    <a href="{% url 'add_tour' %}" class="btn btn-primary">➕ Add Tour</a>
+
+  </div>
+
+  {% if tours %}
+    {% for tour in tours %}
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          {% if tour.image %}
+            <img src="{{ tour.image.url }}" class="img-fluid rounded-start" alt="{{ tour.name }}">
+          {% else %}
+          {% endif %}
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ tour.name }}</h5>
+            <p><strong>Location:</strong> {{ tour.city }}, {{ tour.country }}</p>
+            <p><strong>Duration:</strong> {{ tour.duration_days }} days | <strong>Price:</strong> ₹{{ tour.price }}</p>
+            <p><strong>Status:</strong> {{ tour.is_active|yesno:"Published,Unpublished" }}</p>
+            <a href="{% url 'edit_tour' tour.id %}" class="btn btn-sm btn-warning">Edit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      
+    {% endfor %}
+
+    <nav>
+      <ul class="pagination">
+        {% if tours.has_previous %}
+          <li class="page-item"><a class="page-link" href="?page={{ tours.previous_page_number }}&q={{ query }}">«</a></li>
+        {% endif %}
+        {% for i in tours.paginator.page_range %}
+          <li class="page-item {% if tours.number == i %}active{% endif %}">
+            <a class="page-link" href="?page={{ i }}&q={{ query }}">{{ i }}</a>
+          </li>
+        {% endfor %}
+        {% if tours.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ tours.next_page_number }}&q={{ query }}">»</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  {% else %}
+    <p>No tours found.</p>
+  {% endif %}
+</div>
+{% endblock %}

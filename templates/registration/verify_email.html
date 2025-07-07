@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>✈️ Verify Your Email - Travel Explorer</title>
+</head>
+<body style="font-family: 'Segoe UI', sans-serif; background-color: #e6f7ff; padding: 30px;">
+  <div style="max-width: 600px; margin: auto; background: #ffffff; padding: 35px; border-radius: 10px; box-shadow: 0 6px 18px rgba(0, 123, 255, 0.1);">
+    <div style="text-align: center;">
+      <img src="https://cdn-icons-png.flaticon.com/512/201/201623.png" width="60" alt="Travel Icon" style="margin-bottom: 15px;">
+      <h2 style="color: #0d6efd;">Welcome Aboard, {{ user.username }}! 🌍</h2>
+    </div>
+
+    <p style="font-size: 16px; color: #333; line-height: 1.6;">
+      Thanks for signing up with <strong>Travel Explorer</strong>. You're one step away from discovering new adventures! To complete your registration, please verify your email address.
+    </p>
+
+    <p style="font-size: 18px; font-weight: bold; text-align: center; color: #0d6efd; background: #eaf4ff; padding: 15px; border-radius: 8px; margin: 25px 0;">
+      Your OTP Code: <strong>{{ user.email_otp }}</strong>
+    </p>
+
+    <p style="font-size: 16px; color: #333;">
+      Or click the button below to verify your account:
+    </p>
+
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="http://{{ domain }}/verify-email/" style="padding: 12px 24px; background-color: #0d6efd; color: #fff; text-decoration: none; font-weight: bold; border-radius: 6px;">
+        ✅ Verify My Account
+      </a>
+    </div>
+
+    <p style="font-size: 14px; color: #888; margin-top: 30px;">
+      Didn’t request this email? No worries – just ignore it. ✌️
+    </p>
+
+    <p style="font-size: 14px; color: #888;">Safe Travels, <br><strong>🌐 Travel Explorer Team</strong></p>
+  </div>
+</body>
+</html>

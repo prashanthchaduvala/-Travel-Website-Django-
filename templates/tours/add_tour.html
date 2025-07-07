@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h3 class="mb-3">➕ Add New Tour</h3>
+
+  <form method="post" enctype="multipart/form-data" class="card p-4 shadow-sm">
+    {% csrf_token %}
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="id_name" class="form-label">Tour Name</label>
+        {{ form.name }}
+      </div>
+      <div class="col-md-6">
+        <label for="id_price" class="form-label">Price (₹)</label>
+        {{ form.price }}
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="id_duration_days" class="form-label">Duration (days)</label>
+        {{ form.duration_days }}
+      </div>
+      <div class="col-md-6">
+        <label for="id_availability_date" class="form-label">Available From</label>
+        {{ form.availability_date }}
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="id_country" class="form-label">Country</label>
+        {{ form.country }}
+      </div>
+      <div class="col-md-6">
+        <label for="id_city" class="form-label">City</label>
+        {{ form.city }}
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="id_image" class="form-label">Tour Image</label>
+      {{ form.image }}
+    </div>
+
+    <div class="mb-3 form-check">
+      {{ form.is_active }} <label class="form-check-label" for="id_is_active">Publish now?</label>
+    </div>
+
+     <!-- ✅ The submit button -->
+     <button type="submit" class="btn btn-success">Submit Tour</button>
+     <a href="{% url 'dashboard' %}" class="btn btn-secondary">Cancel</a>
+   </form>
+ </div>
+{% endblock %}
